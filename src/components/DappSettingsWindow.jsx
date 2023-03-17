@@ -3,18 +3,15 @@ import { useInfo } from '../hooks/useInfo'
 import { useState, useEffect } from 'react'
 import {
   setApy,
+  setLsdStakeApr,
   setLidoApy,
   setRpApy,
-  setApyUnit,
   setMinimumDepositAmount,
-  setLsdDepositEnabled,
-  setLsdIsLock,
   setLsdMultiplier,
-  setLsdMultiplierUnit,
 } from '../contracts/setting'
 
 const DappSettingsWindow = ({ setIsModalVisible }) => {
-  const { apr, setApr, rpApr, setRpApr, lidoApr, setLidoApr, aprUnit, setAprUnit, minimum, setMinimum, enabled, setEnabled, multiplier, setMultiplier, multiplierUnit, setMultiplierUnit, owner, isLock, setIsLock } = useInfo()
+  const { apr, setApr, rpApr, setRpApr, lidoApr, setLidoApr, minimum, setMinimum,  multiplier, setMultiplier, owner, isLock} = useInfo()
  
   return (
     <div className="modal-window__wrapper modal-window__wrapper--settings">
@@ -36,13 +33,13 @@ const DappSettingsWindow = ({ setIsModalVisible }) => {
               <button type="button" className="input-wrapper__help" onClick={() => setLsdMultiplier(multiplier)}></button>
             </p>
           </div>
-          <div className="dapp-section__settings-double__half">
+          {/* <div className="dapp-section__settings-double__half">
             <label htmlFor="multiplier-unit">Multiplier unit</label>
             <p className="input-wrapper">
               <input type="number" name="multiplier-unit" id="multiplier-unit" placeholder="0" value={multiplierUnit} onChange={(e) => setMultiplierUnit(e.target.value)} />
               <button type="button" className="input-wrapper__help" onClick={() => setLsdMultiplierUnit(multiplierUnit)}></button>
             </p>
-          </div>
+          </div> */}
         </div>
         <p className="dapp-section__settings-row dapp-section__settings-row--apr">
           <span>APR %</span>
@@ -57,13 +54,13 @@ const DappSettingsWindow = ({ setIsModalVisible }) => {
               <button type="button" className="input-wrapper__help" onClick={() => setApy(apr)}></button>
             </p>
           </div>
-          <div className="dapp-section__settings-double__half">
+          {/* <div className="dapp-section__settings-double__half">
             <label htmlFor="apr-unit">Apr unit</label>
             <p className="input-wrapper">
               <input type="number" name="apr-unit" id="apr-unit" placeholder="0" value={aprUnit} onChange={(e) => setAprUnit(e.target.value)} />
               <button type="button" className="input-wrapper__help" onClick={() => setApyUnit(aprUnit)}></button>
             </p>
-          </div>
+          </div> */}
         </div>
         <p className="dapp-section__settings-row dapp-section__settings-row--slippage">
           <span>Set Minimum Deposit Amount</span>

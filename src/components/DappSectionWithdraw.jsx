@@ -72,8 +72,8 @@ const DappSectionWithdraw = ({ setIsModalVisible }) => {
   }, [inputToken])
 
   const handleClick = () => {
-    // setIsModalVisible(true)
-    // dispatch({ type: TRIGGER, payload: 'INPUT' })
+    setIsModalVisible(true)
+    dispatch({ type: TRIGGER, payload: 'INPUT' })
   }
 
   const handleMaxClick = () => {

@@ -73,8 +73,8 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
   }, [outputToken])
 
   const handleClick = () => {
-    // setIsModalVisible(true)
-    // dispatch({ type: TRIGGER, payload: 'OUTPUT' })
+    setIsModalVisible(true)
+    dispatch({ type: TRIGGER, payload: 'OUTPUT' })
   }
 
   const handleSwitchClick = () => {

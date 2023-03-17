@@ -3,30 +3,24 @@ import { useState, useEffect } from 'react'
 
 export const useInfo = () => {
   const [apr, setApr] = useState()
-  const [aprUnit, setAprUnit] = useState()
+  const [stakeApr, setStakeApr] = useState()
   const [lidoApr, setLidoApr] = useState()
   const [rpApr, setRpApr] = useState()
   const [swiseApr, setSwiseApr] = useState()
   const [minimum, setMinimum] = useState()
-  const [enabled, setEnabled] = useState()
   const [multiplier, setMultiplier] = useState()
-  const [multiplierUnit, setMultiplierUnit] = useState()
   const [owner, setOwner] = useState()
-  const [isLock, setIsLock] = useState()
 
   const setInfos = async () => {
     try {
-      const { apr, rpApr, lidoApr, aprUnit, multiplier, multiplierUnit, depositEnabled, isLock, minimumAmount, owner } = await getOwnerContract()
+      const { apr, rpApr, lidoApr, stakeApr, multiplier, minimumAmount, owner } = await getOwnerContract()
       setApr(apr)
-      setAprUnit(aprUnit)
       setRpApr(rpApr)
+      setStakeApr(stakeApr)
       setLidoApr(lidoApr)
       setSwiseApr(swiseApr)
       setMinimum(minimumAmount)
-      setEnabled(depositEnabled)
-      setIsLock(isLock)
       setMultiplier(multiplier)
-      setMultiplierUnit(multiplierUnit)
       setOwner(owner)
     } catch (error) {
       console.log(error)
@@ -37,5 +31,5 @@ export const useInfo = () => {
     setInfos()
   }, [])
 
-  return { apr, setApr, rpApr, setRpApr, lidoApr, setLidoApr, aprUnit, setAprUnit, minimum, setMinimum, enabled, setEnabled, multiplier, setMultiplier, multiplierUnit, setMultiplierUnit, owner, isLock, setIsLock }
+  return { apr, setApr, rpApr, setRpApr, lidoApr, setLidoApr, stakeApr, minimum, setMinimum, multiplier, setMultiplier, owner, }
 }
