@@ -10,7 +10,7 @@ const DappSectionInfo = () => {
   const outputToken = useSelector(state => state.inputReducer.outputToken)
   const exchangeRate = useExchangeRate()
 
-  const { apr, aprUnit, minimum } = useInfo()
+  const { apr, stakeApr, minimum } = useInfo()
 
   return (
     <div className="dapp-section__info">
@@ -31,7 +31,16 @@ const DappSectionInfo = () => {
         <ul className="dapp-section__info-item">
           <li className="dapp-section__info-item-name">Average Return</li>
           <li className="dapp-section__info-numbers">
-            <span className="green">≈ {showRate(apr / (10 ** (aprUnit - 2)))}%</span> APR
+            {
+              inputToken === "ETH" || inputToken === "LS-ETH" ?
+                <>
+                  <span className="green">≈ {showRate(apr / 100)}%</span> APR
+                </>
+                :
+                <>
+                  <span className="green">≈ {showRate(stakeApr)}%</span> APR
+                </>
+            }
           </li>
           <li className="dapp-section__info-tip">
             <a href={`https://etherscan.io/address/${lsdOwner}#readContract`} target="_blank">
