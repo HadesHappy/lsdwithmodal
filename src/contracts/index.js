@@ -74,10 +74,10 @@ const getTokenLsETHContract = async () => {
     const exchangeRate = ethers.utils.formatEther(lsdExchangeRate.toString())
 
     // getTotalSupply
-    // const lsdTotalSupply = await lsEthContract.totalSupply()
-    // const totalSupply = Number(ethers.utils.formatEther(lsdTotalSupply.toString()))
+    const lsdTotalSupply = await lsEthContract.totalSupply()
+    const totalSupply = Number(ethers.utils.formatEther(lsdTotalSupply.toString()))
 
-    return { exchangeRate }
+    return { exchangeRate, totalSupply }
   }
   catch (error) {
     console.log(error)
