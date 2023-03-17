@@ -1,5 +1,6 @@
 import { ethers } from 'ethers'
 import depositPool from './abis/depositPool.json'
+import stakingPool from './abis/stakingPool.json'
 import lsEth from './abis/tokenLsETH.json'
 import veLsd from './abis/tokenVELSD.json'
 import lsd from './abis/tokenLsd.json'
@@ -70,15 +71,15 @@ const stake = async (amount, address) => {
     const signer = getSigner()
     const lsdContract = new ethers.Contract(lsd.address, lsd.abi, signer)
 
-    const allowance = Number(await lsdContract.allowance(address, veLsd.address))
+    const allowance = Number(await lsdContract.allowance(address, stakingPool.address))
 
     if (allowance < amount * Math.pow(10, lsdDecimal)) {
       const tx1 = await lsdContract.approve(veLsd.address, ethers.utils.parseEther(amount.toString()))
       await tx1.wait()
     }
 
-    const veLsdContract = new ethers.Contract(veLsd.address, veLsd.abi, signer)
-    const tx2 = await veLsdContract.mint(ethers.utils.parseUnits(amount.toString(), 9))
+    const stakingContract = new ethers.Contract(stakingPool.address, stakingPool.abi, signer)
+    const tx2 = await stakingContract.stakeLSD(ethers.utils.parseUnits(amount.toString(), 9))
     const receipt = await tx2.wait()
 
     if (receipt?.status === 1)
@@ -104,9 +105,9 @@ const stake = async (amount, address) => {
 const unstake = async (amount) => {
   try {
     const signer = getSigner()
-    const veLsdContract = new ethers.Contract(veLsd.address, veLsd.abi, signer)
-    
-    const tx = await veLsdContract.burn(ethers.utils.parseUnits(amount.toString(), 9))
+    const stakingContract = new ethers.Contract(stakingPool.address, stakingPool.abi, signer)
+
+    const tx = await stakingContract.unstakeLSD(ethers.utils.parseUnits(amount.toString(), 9))
     const receipt = await tx.wait()
 
     if (receipt?.status === 1)
@@ -129,4 +130,42 @@ const unstake = async (amount) => {
   }
 }
 
-export { deposit, withdraw, stake, unstake }
+const claim = async () => {
+  try {
+    const signer = getSigner()
+    const stakingContract = new ethers.Contract(stakingPool.address, stakingPool.abi, signer)
+
+    const tx = await stakingContract.claim()
+    const receipt = await tx.wait()
+    if (receipt?.status === 1)
+      return {
+        status: 'Success',
+        error: ''
+      }
+    else
+      return {
+        status: 'Failed',
+        error: receipt
+      }
+  } catch (error) {
+    console.log(error)
+    return {
+      status: 'Error',
+      error: error.code
+    }
+  }
+}
+
+const getClaimAmount = async (address) => {
+  try {
+    const signer = getSigner()
+    const stakingContract = new ethers.Contract(stakingPool.address, stakingPool.abi, signer)
+    const claimAmount = await stakingContract.getClaimAmount(address);
+
+    return claimAmount
+  } catch (error) {
+
+  }
+}
+
+export { deposit, withdraw, stake, unstake, claim, getClaimAmount }

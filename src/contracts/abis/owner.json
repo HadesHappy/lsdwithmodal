@@ -1,5 +1,5 @@
 {
-  "address": "0x841509C8e03427719c29DE81b697Ca6002FCA9b8",
+  "address": "0xa5Ef18F8D880b88ceEe92783F9584a9A760cf408",
   "abi": [
     {
       "inputs": [
@@ -140,45 +140,6 @@
     },
     {
       "inputs": [],
-      "name": "getApyUnit",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getDepositEnabled",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getIsLock",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
       "name": "getLIDOApy",
       "outputs": [
         {
@@ -206,19 +167,6 @@
     {
       "inputs": [],
       "name": "getMultiplier",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getMultiplierUnit",
       "outputs": [
         {
           "internalType": "uint256",
@@ -270,6 +218,19 @@
     },
     {
       "inputs": [],
+      "name": "getStakeApr",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
       "name": "owner",
       "outputs": [
         {
@@ -297,45 +258,6 @@
         }
       ],
       "name": "setApy",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_apyUnit",
-          "type": "uint256"
-        }
-      ],
-      "name": "setApyUnit",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bool",
-          "name": "_depositEnabled",
-          "type": "bool"
-        }
-      ],
-      "name": "setDepositEnabled",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bool",
-          "name": "_isLock",
-          "type": "bool"
-        }
-      ],
-      "name": "setIsLock",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -383,19 +305,6 @@
       "inputs": [
         {
           "internalType": "uint256",
-          "name": "_multiplierUnit",
-          "type": "uint256"
-        }
-      ],
-      "name": "setMultiplierUnit",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
           "name": "_protocalFee",
           "type": "uint256"
         }
@@ -427,6 +336,19 @@
         }
       ],
       "name": "setSWISEApy",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_stakeApr",
+          "type": "uint256"
+        }
+      ],
+      "name": "setStakeApr",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

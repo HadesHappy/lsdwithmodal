@@ -1,5 +1,5 @@
 {
-  "address": "0x0e1b9fef4Ba04E695E80f353fc5F6bf302958627",
+  "address": "0xe61Da3fF36b5bbE56751791030ACDd68e3c756Aa",
   "abi": [
     {
       "inputs": [
@@ -59,13 +59,6 @@
     },
     {
       "inputs": [],
-      "name": "receiveVaultWithdrawalETH",
-      "outputs": [],
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
       "name": "version",
       "outputs": [
         {
@@ -83,6 +76,11 @@
           "internalType": "uint256",
           "name": "_amount",
           "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
         }
       ],
       "name": "withdrawEther",

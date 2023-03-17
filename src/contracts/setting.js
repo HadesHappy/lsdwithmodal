@@ -48,40 +48,10 @@ const setSwiseApy = async (amount) => {
   }
 }
 
-const setApyUnit = async (amount) => {
-  try {
-    const contract = getContract()
-    const tx = await contract.setApyUnit(amount)
-    await tx.wait()
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 const setMinimumDepositAmount = async (amount) => {
   try {
     const contract = getContract()
     const tx = await contract.setMinimumDepositAmount(ethers.utils.parseEther(amount.toString()))
-    await tx.wait()
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-const setLsdDepositEnabled = async (enabled) => {
-  try {
-    const contract = getContract()
-    const tx = await contract.setDepositEnabled(enabled)
-    await tx.wait()
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-const setLsdIsLock = async (lock) => {
-  try {
-    const contract = getContract()
-    const tx = await contract.setIsLock(lock)
     await tx.wait()
   } catch (error) {
     console.log(error)
@@ -98,25 +68,23 @@ const setLsdMultiplier = async (amount) => {
   }
 }
 
-const setLsdMultiplierUnit = async (amount) => {
+const setLsdStakeApr = async (amount) => {
   try {
     const contract = getContract()
-    const tx = await contract.setMultiplierUnit(amount)
+    const tx = await contract.setStakeApr(amount)
     await tx.wait()
   } catch (error) {
     console.log(error)
   }
 }
 
+
 export {
   setApy,
+  setLsdStakeApr,
   setLidoApy,
   setRpApy,
   setSwiseApy,
-  setApyUnit,
   setMinimumDepositAmount,
-  setLsdDepositEnabled,
-  setLsdIsLock,
   setLsdMultiplier,
-  setLsdMultiplierUnit,
 }

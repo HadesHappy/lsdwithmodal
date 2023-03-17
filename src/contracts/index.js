@@ -3,6 +3,8 @@ import owner from './abis/owner.json'
 import updateBalance from './abis/updateBalance.json'
 import lsEth from './abis/tokenLsETH.json'
 import veLSD from './abis/tokenVELSD.json'
+import staking from './abis/stakingPool.json'
+
 import { rpcUrl } from "../utils/constants"
 
 const getContracts = () => {
@@ -12,8 +14,9 @@ const getContracts = () => {
   const balanceContract = new ethers.Contract(updateBalance.address, updateBalance.abi, provider)
   const lsEthContract = new ethers.Contract(lsEth.address, lsEth.abi, provider)
   const veLSDContract = new ethers.Contract(veLSD.address, veLSD.abi, provider)
+  const stakingContract = new ethers.Contract(staking.address, staking.abi, provider)
 
-  return { ownerContract, balanceContract, lsEthContract, veLSDContract }
+  return { ownerContract, balanceContract, lsEthContract, veLSDContract, stakingContract }
 }
 
 const getOwnerContract = async () => {
@@ -23,11 +26,8 @@ const getOwnerContract = async () => {
   try {
     // get Aprs
     const apr = Number(await ownerContract.getApy())
-    const rpApr = Number(await ownerContract.getRPApy())
     const lidoApr = Number(await ownerContract.getLIDOApy())
-    const swiseApr = Number(await ownerContract.getSWISEApy())
-
-    const aprUnit = Number(await ownerContract.getApyUnit())
+    const stakeApr = Number(await ownerContract.getStakeApr())
 
     // const apr = Number(lsdApr) / (10 ** (Number(lsdAprUnit) - 2))
     // const rpApr = Number(lsdRPApr) / (10 ** (Number(lsdAprUnit) - 2))
@@ -36,14 +36,7 @@ const getOwnerContract = async () => {
 
     // get multiplier
     const multiplier = Number(await ownerContract.getMultiplier())
-    const multiplierUnit = Number(await ownerContract.getMultiplierUnit())
     // const multiplier = Number(lsdMultiplier) / (10 ** (Number(lsdMultiplierUnit) - 2))
-
-    // get deposit enabled
-    const depositEnabled = await ownerContract.getDepositEnabled()
-
-    // get isLock
-    const isLock = await ownerContract.getIsLock()
 
     // get owner
     const owner = await ownerContract.owner()
@@ -52,7 +45,7 @@ const getOwnerContract = async () => {
     const minimumDepositAmount = await ownerContract.getMinimumDepositAmount()
     const minimumAmount = Number(ethers.utils.formatEther(minimumDepositAmount))
 
-    return { apr, rpApr, lidoApr, aprUnit, multiplier, multiplierUnit, depositEnabled, isLock, minimumAmount, owner }
+    return { apr, lidoApr, stakeApr, multiplier, minimumAmount, owner }
   } catch (error) {
     console.log(error)
   }
@@ -81,10 +74,10 @@ const getTokenLsETHContract = async () => {
     const exchangeRate = ethers.utils.formatEther(lsdExchangeRate.toString())
 
     // getTotalSupply
-    const lsdTotalSupply = await lsEthContract.totalSupply()
-    const totalSupply = Number(ethers.utils.formatEther(lsdTotalSupply.toString()))
+    // const lsdTotalSupply = await lsEthContract.totalSupply()
+    // const totalSupply = Number(ethers.utils.formatEther(lsdTotalSupply.toString()))
 
-    return { exchangeRate, totalSupply }
+    return { exchangeRate }
   }
   catch (error) {
     console.log(error)
@@ -105,10 +98,25 @@ const getTokenVeLSDContract = async () => {
   }
 }
 
+const getStakingContract = async () => {
+  const { stakingContract } = getContracts()
+  try {
+    // get total staked LSD
+    const totalLSD = ethers.utils.formatUnits(await stakingContract.getTotalLSD(), 9)
+    const totalRewardsLSD = ethers.utils.formatUnits(await stakingContract.getTotalRewards(), 9)
+
+    return { totalLSD, totalRewardsLSD }
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   getOwnerContract,
   getUpdateBalanceContract,
   getTokenLsETHContract,
   getTokenVeLSDContract,
+  getStakingContract,
 }
 

@@ -1,5 +1,5 @@
 {
-  "address": "0x2B1fD79d8A76AdD79A8401B6d33cD2d672fA836F",
+  "address": "0x39cC7C0C84c10fc18D4b97Accd22B916B0cfCE61",
   "abi": [
     {
       "inputs": [
@@ -7,16 +7,6 @@
           "internalType": "contract ILSDStorage",
           "name": "_lsdStorageAddress",
           "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "name_",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "symbol_",
-          "type": "string"
         }
       ],
       "stateMutability": "nonpayable",
@@ -45,25 +35,6 @@
         }
       ],
       "name": "Approval",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "OwnershipTransferred",
       "type": "event"
     },
     {
@@ -211,8 +182,13 @@
     {
       "inputs": [
         {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        },
+        {
           "internalType": "uint256",
-          "name": "_veLSDAmount",
+          "name": "_amount",
           "type": "uint256"
         }
       ],
@@ -231,7 +207,7 @@
           "type": "uint8"
         }
       ],
-      "stateMutability": "view",
+      "stateMutability": "pure",
       "type": "function"
     },
     {
@@ -285,8 +261,13 @@
     {
       "inputs": [
         {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        },
+        {
           "internalType": "uint256",
-          "name": "_lsdTokenAmount",
+          "name": "_amount",
           "type": "uint256"
         }
       ],
@@ -306,26 +287,6 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "renounceOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -404,19 +365,6 @@
           "type": "bool"
         }
       ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },

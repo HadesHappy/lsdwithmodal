@@ -1,17 +1,18 @@
 // LSD bases
-const lsdStorage = '0x01AB550aeFc3a892F191e6382328CdD44503c408'
-const lsdOwner = '0x841509C8e03427719c29DE81b697Ca6002FCA9b8'
-const lsdDepositPool = '0x0e1b9fef4Ba04E695E80f353fc5F6bf302958627'
-const lsdUpdateBalance = '0x6bB77A2A427783B1d4C20DE324027761eC01c4E3'
+const lsdStorage = '0xC1D358ad6580F232796262aAf3F2EE2FA5E9b484'
+const lsdOwner = '0xa5Ef18F8D880b88ceEe92783F9584a9A760cf408'
+const lsdDepositPool = '0xe61Da3fF36b5bbE56751791030ACDd68e3c756Aa'
+const lsdStakingPool = '0xCa8E0174bA675fAF54A6555f1C385fA4E44b3799'
+const lsdUpdateBalance = '0xB89A9CdE26Fcf918935Af2DFB602585E193BC1aA'
 
 // Tokens
-const lsdTokenLsETH = '0xE151A1565d63C9308b36B8839ea3E134366B08cF'
-const lsdTokenVeLSD = '0x2B1fD79d8A76AdD79A8401B6d33cD2d672fA836F'
+const lsdTokenLsETH = '0xA78a87e93f093f8C60cc2BAB90339232807e4c6b'
+const lsdTokenVeLSD = '0x39cC7C0C84c10fc18D4b97Accd22B916B0cfCE61'
 const lsdToken = '0x97d4f49eeb0e2c96d5ebaa71ab8418e563ecd9fd'
 
 // vaults
-const lsdLIDOVault = '0x438fB03F46D5F2c0F30953Ca10D2A6E2A4feA97d'
-const lsdRPVault = '0x24e56421C1d4832D567b091277fF31f3D8049C80'
+const lsdLIDOVault = '0x13D79A8895a680024Fc6F760664279DB7D91B92f'
+const lsdRPVault = ''
 const lsdSWISEVault = ''
 
 // contracts
@@ -30,6 +31,7 @@ export {
   lsdOwner,
   lsdUpdateBalance,
   lsdDepositPool,
+  lsdStakingPool,
   lsdLIDOVault,
   lsdRPVault,
   lsdSWISEVault,
