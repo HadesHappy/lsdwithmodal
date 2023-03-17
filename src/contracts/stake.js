@@ -74,7 +74,7 @@ const stake = async (amount, address) => {
     const allowance = Number(await lsdContract.allowance(address, stakingPool.address))
 
     if (allowance < amount * Math.pow(10, lsdDecimal)) {
-      const tx1 = await lsdContract.approve(veLsd.address, ethers.utils.parseEther(amount.toString()))
+      const tx1 = await lsdContract.approve(stakingPool.address, ethers.utils.parseEther(amount.toString()))
       await tx1.wait()
     }
 
