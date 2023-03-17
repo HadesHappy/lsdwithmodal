@@ -33,7 +33,7 @@ const PageHeader = ({ setIsWalletWindowVisible }) => {
         </ul>
       </nav>
       <nav className="page-header__nav-right">
-        <Link to={'/dapp'} >Buy LSD</Link>
+        <a href="https://app.uniswap.org/#/swap?outputCurrency=0x97d4f49eeb0e2c96d5ebaa71ab8418e563ecd9fd" target="_blank">Buy LSD</a>
         {
           address ?
             <button
